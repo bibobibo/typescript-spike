@@ -2,9 +2,20 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "module": "commonjs",
         "target": "es6",
         "jsx": "react"
-    }
+    },
+    "include": [
+        "src/*"
+    ],
+    "exclude": [
+        "**/node_modules/*",
+        "**/__tests__/*",
+        "**/__mocks__/*",
+        "src/**/*.unit.ts",
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts"
+    ]
 }
