@@ -2,7 +2,12 @@
 
 ## How to setup local spike env?
 1. git clone https://github.com/bibobibo/typescript-spike.git
-2. npm install
-3. npx webpack-dev-server
+2. npm i && npm start
+3. npm t
 
-## Decorator
+## familiar with proxy pattern 
+1. what is [proxy pattern](https://refactoring.guru/design-patterns/proxy)
+2. `git checkout master` to see the proxy pattern demo
+3. [proxy in Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 
+4. use global object `Proxy` to refactor the demo
+5. `git checkout proxy` to see the answer
