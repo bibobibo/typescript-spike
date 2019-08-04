@@ -12,7 +12,7 @@ describe("Agent", () => {
 	it("should filter male tenant for renter", () => {
 		const tenant:Tenant = {gender: Gender.Male, name: "Brant"};
 		const renter = new Renter();
-		const agent = new Agent(renter);
+		const agent = Agent(renter);
 
 		agent.showHouse(tenant);
 
@@ -22,7 +22,7 @@ describe("Agent", () => {
 	it("should show house to to female renter", () => {
 		const tenant: Tenant = {gender: Gender.Female, name: "Shane"};
 		const renter = new Renter();
-		const agent = new Agent(renter);
+		const agent = Agent(renter);
 
 		agent.showHouse(tenant);
 

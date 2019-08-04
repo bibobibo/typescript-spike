@@ -1,24 +1,23 @@
 import {Gender, Rent, Tenant} from "./Rent";
 
-export class Agent implements Rent{
-	constructor(private renter: Rent) {}
+export const Agent = function (renter: Rent) {
+	return new Proxy(renter, {
+		get(target: Rent, p: string | number | symbol, receiver: any): any {
+			const originalMethod = Reflect.get(target, p, receiver);
 
-	publishRentInfo(): void {
-		this.renter.publishRentInfo();
-	}
+			if(p === "showHouse" || p === "signContact") {
+				return new Proxy(originalMethod, {
+					apply(target: any, thisArg: any, argArray?: any): any {
+						const tenant = argArray[0] as Tenant;
 
-	showHouse(tenant: Tenant): void {
-		if(tenant.gender === Gender.Male) {
-			console.log("sorry, this house is only rent for female.");
-			return;
+						if(tenant.gender === Gender.Female) {
+							return Reflect.apply(originalMethod, thisArg, argArray);
+						}
+					}
+				})
+			}
+
+			return originalMethod;
 		}
-
-		this.renter.showHouse(tenant);
-	}
-
-	signContact(tenant: Tenant): void {
-		if(tenant.gender === Gender.Female) {
-			this.renter.signContact(tenant);
-		}
-	}
-}
+	});
+};
